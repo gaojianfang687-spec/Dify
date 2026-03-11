@@ -1,0 +1,1966 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 飞书文档
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.11@35bcd3f233f99d07bdadef8b326945df3bda5e8f773330144bc90d84800336b9
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.1.31@638e473191f93192f670875b06edf0bcb89a3433aa736be89ed1749073b8a168
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/feishu_document:0.0.1@7ffc4bd08dad6ca203ea343f2771de3ed4de2a19ed196b305d1ea7921370d7a7
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1773035229800-source-1773035425929-target
+      selected: false
+      source: '1773035229800'
+      sourceHandle: source
+      target: '1773035425929'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1773035425929-false-1773035467419-target
+      selected: false
+      source: '1773035425929'
+      sourceHandle: 'false'
+      target: '1773035467419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1773035425929-true-1773035525567-target
+      source: '1773035425929'
+      sourceHandle: 'true'
+      target: '1773035525567'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1773035425929-a8a6706d-85c4-4cd9-8ce9-7f77b0771341-1773035567513-target
+      source: '1773035425929'
+      sourceHandle: a8a6706d-85c4-4cd9-8ce9-7f77b0771341
+      target: '1773035567513'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1773035525567-true-1773035717242-target
+      source: '1773035525567'
+      sourceHandle: 'true'
+      target: '1773035717242'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: if-else
+      id: 1773035717242-source-1773035735585-target
+      source: '1773035717242'
+      sourceHandle: source
+      target: '1773035735585'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1773035735585-false-1773035791188-target
+      source: '1773035735585'
+      sourceHandle: 'false'
+      target: '1773035791188'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1773035525567-false-1773035965375-target
+      source: '1773035525567'
+      sourceHandle: 'false'
+      target: '1773035965375'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1773035965375-source-1773036025653-target
+      source: '1773035965375'
+      sourceHandle: source
+      target: '1773036025653'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: tool
+      id: 1773036025653-source-1773036129070-target
+      source: '1773036025653'
+      sourceHandle: source
+      target: '1773036129070'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1773036129070-source-1773036169352-target
+      source: '1773036129070'
+      sourceHandle: source
+      target: '1773036169352'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1773036169352-source-1773036205262-target
+      source: '1773036169352'
+      sourceHandle: source
+      target: '1773036205262'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: tool
+      id: 1773036025653-source-1773036878262-target
+      source: '1773036025653'
+      sourceHandle: source
+      target: '1773036878262'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1773036878262-source-1773036963110-target
+      source: '1773036878262'
+      sourceHandle: source
+      target: '1773036963110'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1773035567513-true-1773037048494-target
+      source: '1773035567513'
+      sourceHandle: 'true'
+      target: '1773037048494'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: if-else
+      id: 1773037048494-source-1773037060533-target
+      source: '1773037048494'
+      sourceHandle: source
+      target: '1773037060533'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1773037060533-true-1773037083844-target
+      source: '1773037060533'
+      sourceHandle: 'true'
+      target: '1773037083844'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1773037060533-false-1773037212620-target
+      source: '1773037060533'
+      sourceHandle: 'false'
+      target: '1773037212620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1773035567513-false-1773037226273-target
+      source: '1773035567513'
+      sourceHandle: 'false'
+      target: '1773037226273'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1773037083844-source-1773037239615-target
+      source: '1773037083844'
+      sourceHandle: source
+      target: '1773037239615'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1773037226273-source-1773037239615-target
+      source: '1773037226273'
+      sourceHandle: source
+      target: '1773037239615'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: tool
+      id: 1773037239615-source-1773037323961-target
+      source: '1773037239615'
+      sourceHandle: source
+      target: '1773037323961'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: tool
+      id: 1773037239615-source-17730373441990-target
+      source: '1773037239615'
+      sourceHandle: source
+      target: '17730373441990'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 17730373441990-source-1773037370695-target
+      source: '17730373441990'
+      sourceHandle: source
+      target: '1773037370695'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1773037323961-source-1773037402428-target
+      source: '1773037323961'
+      sourceHandle: source
+      target: '1773037402428'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1773037402428-source-1773037408001-target
+      source: '1773037402428'
+      sourceHandle: source
+      target: '1773037408001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1773035735585-true-1773043918353-target
+      source: '1773035735585'
+      sourceHandle: 'true'
+      target: '1773043918353'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1773043918353-source-1773036025653-target
+      source: '1773043918353'
+      sourceHandle: source
+      target: '1773036025653'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: 文档
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: file
+        - hint: ''
+          label: 文档类型
+          options:
+          - 会员纪要
+          - 周报
+          placeholder: ''
+          required: true
+          type: select
+          variable: type
+      height: 134
+      id: '1773035229800'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: a9694b82-10d5-4c20-9907-358cf5832e8a
+            value: 会员纪要
+            varType: string
+            variable_selector:
+            - '1773035229800'
+            - type
+          id: 'true'
+          logical_operator: and
+        - case_id: a8a6706d-85c4-4cd9-8ce9-7f77b0771341
+          conditions:
+          - comparison_operator: is
+            id: 61800d3e-5155-4041-9eb4-a8802d8642bd
+            value: 周报
+            varType: string
+            variable_selector:
+            - '1773035229800'
+            - type
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 171
+      id: '1773035425929'
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: 你的文档类型我们不能提供服务
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 99
+      id: '1773035467419'
+      position:
+        x: 374
+        y: 559
+      positionAbsolute:
+        x: 374
+        y: 559
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 1de4604d-c253-4c02-a379-a97003773711
+            value: ''
+            varType: file
+            variable_selector:
+            - '1773035229800'
+            - file
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 会员纪要是否存在
+        type: if-else
+      height: 123
+      id: '1773035525567'
+      position:
+        x: 634
+        y: 109
+      positionAbsolute:
+        x: 634
+        y: 109
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: ca5ccb9e-40c2-4216-8427-604b4fb0eab5
+            value: ''
+            varType: file
+            variable_selector:
+            - '1773035229800'
+            - file
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 周报是否存在
+        type: if-else
+      height: 123
+      id: '1773035567513'
+      position:
+        x: 669
+        y: 460
+      positionAbsolute:
+        x: 669
+        y: 460
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1773035229800'
+        - file
+      height: 103
+      id: '1773035717242'
+      position:
+        x: 883.4736005826503
+        y: 28.96284228712196
+      positionAbsolute:
+        x: 883.4736005826503
+        y: 28.96284228712196
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 6d18c089-b71c-4bac-8dfe-646d00896e40
+            value: ''
+            varType: string
+            variable_selector:
+            - '1773035717242'
+            - text
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 文档内容是否为空
+        type: if-else
+      height: 123
+      id: '1773035735585'
+      position:
+        x: 1162.5678999817128
+        y: -46.508654708189965
+      positionAbsolute:
+        x: 1162.5678999817128
+        y: -46.508654708189965
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: <font color ="red">文件内容为空，无法处理 </font>
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 115
+      id: '1773035791188'
+      position:
+        x: 1426.1464828142643
+        y: 90.76284228712198
+      positionAbsolute:
+        x: 1426.1464828142643
+        y: 90.76284228712198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen-max
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 5db128f1-1952-4831-9605-1ed47b50fbee
+          role: system
+          text: '请你帮我整理一份规范、清晰的会议（会员）纪要。
+
+            要求：
+
+            1. 提炼核心议题、关键结论、重要决策。
+
+            2. 明确责任人、完成时间、待办事项。
+
+            3. 结构清晰：会议主题、参会人员、时间、主要内容、决议、下一步行动。
+
+            4. 语言精炼，不啰嗦，便于存档和同步。
+
+
+            请基于我提供的语音转文字/聊天记录/会议内容整理：
+
+            {{#context#}}'
+        selected: false
+        title: 用户输入-会员纪要
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1773035965375'
+      position:
+        x: 1024.4736005826503
+        y: 194.66544557712785
+      positionAbsolute:
+        x: 1024.4736005826503
+        y: 194.66544557712785
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1773035965375'
+          - text
+        - - '1773043918353'
+          - text
+      height: 133
+      id: '1773036025653'
+      position:
+        x: 1726.7751454746804
+        y: 245.49859078477795
+      positionAbsolute:
+        x: 1726.7751454746804
+        y: 245.49859078477795
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1773036129070'
+      position:
+        x: 1967.47360058265
+        y: 166.76284228712197
+      positionAbsolute:
+        x: 1967.47360058265
+        y: 166.76284228712197
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Document title, only supports plain text content.
+            ja_JP: Document title, only supports plain text content.
+            pt_BR: Document title, only supports plain text content.
+            zh_Hans: 文档标题，只支持纯文本内容。
+          label:
+            en_US: Document title
+            ja_JP: Document title
+            pt_BR: Document title
+            zh_Hans: 文档标题
+          llm_description: 文档标题，只支持纯文本内容，可以为空。
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Document content, supports markdown syntax, can be empty.
+            ja_JP: Document content, supports markdown syntax, can be empty.
+            pt_BR: Document content, supports markdown syntax, can be empty.
+            zh_Hans: 文档内容，支持 markdown 语法，可以为空。
+          label:
+            en_US: Document content
+            ja_JP: Document content
+            pt_BR: Document content
+            zh_Hans: 文档内容
+          llm_description: 文档内容，支持 markdown 语法，可以为空。
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            ja_JP: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            pt_BR: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            zh_Hans: 文档所在文件夹的 Token，不传或传空表示根目录。例如：https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf。
+          label:
+            en_US: folder_token
+            ja_JP: folder_token
+            pt_BR: folder_token
+            zh_Hans: 文档所在文件夹的 Token
+          llm_description: 文档所在文件夹的 Token，不传或传空表示根目录。例如：https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf。
+          max: null
+          min: null
+          name: folder_token
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          content: ''
+          folder_token: ''
+          title: ''
+        plugin_id: langgenius/feishu_document
+        plugin_unique_identifier: langgenius/feishu_document:0.0.1@7ffc4bd08dad6ca203ea343f2771de3ed4de2a19ed196b305d1ea7921370d7a7
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=60e4536c-aec4-4945-8b75-7829c4435185&filename=6ba0989bfb8e757355f7dae5f511c8d1ca34be80733914fa0ef37a914e5c14fa.svg
+        provider_id: langgenius/feishu_document/feishu_document
+        provider_name: langgenius/feishu_document/feishu_document
+        provider_type: builtin
+        selected: false
+        title: 创建飞书文档
+        tool_configurations: {}
+        tool_description: 创建飞书文档，支持创建空文档和带内容的文档，支持 markdown 语法创建。应用需要开启机器人能力(https://open.feishu.cn/document/faq/trouble-shooting/how-to-enable-bot-ability)。
+        tool_label: 创建飞书文档
+        tool_name: create_document
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1773036025653.output#}}'
+          folder_token:
+            type: mixed
+            value: null
+          title:
+            type: mixed
+            value: '{{#1773036129070.text#}} 会员纪要'
+        type: tool
+      height: 51
+      id: '1773036169352'
+      position:
+        x: 2244.4736005826503
+        y: 90.76284228712198
+      positionAbsolute:
+        x: 2244.4736005826503
+        y: 90.76284228712198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1773036169352.text#}}
+
+          {{#1773036169352.files#}}'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 121
+      id: '1773036205262'
+      position:
+        x: 2545.4736005826503
+        y: 90.76284228712198
+      positionAbsolute:
+        x: 2545.4736005826503
+        y: 90.76284228712198
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the
+            generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not
+              required.
+            ja_JP: Optional custom output file name, and the filename suffix is not
+              required.
+            pt_BR: Optional custom output file name, and the filename suffix is not
+              required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=60e4536c-aec4-4945-8b75-7829c4435185&filename=94713265c9473c3bd2bc8b0dd0794ad40955b7431610243bbd00ab02dae281cf.png
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown ⮕ DOCX
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: variable
+            value:
+            - '1773035229800'
+            - file
+          md_text:
+            type: mixed
+            value: '{{#1773036025653.output#}}'
+          output_filename:
+            type: mixed
+            value: 会员纪要
+        type: tool
+      height: 51
+      id: '1773036878262'
+      position:
+        x: 1978.7324994560581
+        y: 320.76284228712194
+      positionAbsolute:
+        x: 1978.7324994560581
+        y: 320.76284228712194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1773043918353.text#}}
+
+          {{#1773035965375.text#}}
+
+          {{#1773036878262.files#}}'
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 140
+      id: '1773036963110'
+      position:
+        x: 2281.4736005826503
+        y: 320.76284228712194
+      positionAbsolute:
+        x: 2281.4736005826503
+        y: 320.76284228712194
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_array_file: false
+        selected: false
+        title: 文档提取器 2
+        type: document-extractor
+        variable_selector:
+        - '1773035229800'
+        - file
+      height: 103
+      id: '1773037048494'
+      position:
+        x: 925.6019212718977
+        y: 368.59219085390697
+      positionAbsolute:
+        x: 925.6019212718977
+        y: 368.59219085390697
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 55441c48-473e-4580-9ca0-fb014ea859d3
+            value: ''
+            varType: string
+            variable_selector:
+            - '1773037048494'
+            - text
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 条件分支 5
+        type: if-else
+      height: 123
+      id: '1773037060533'
+      position:
+        x: 997.6471231250171
+        y: 492.21037084195655
+      positionAbsolute:
+        x: 997.6471231250171
+        y: 492.21037084195655
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1773037048494'
+          - text
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-max
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 9f2f2cd7-6a0b-49b3-a9a8-ddcf165f4977
+          role: system
+          text: '请你帮我生成一份清晰、专业、简洁的工作周报。
+
+            内容要求：
+
+            1. 本周完成工作：分点列出，突出重点、结果和数据。
+
+            2. 遇到的问题与解决方案：客观、简洁。
+
+            3. 下周工作计划：明确、可执行。
+
+            4. 语言正式、条理清晰，适合直接提交给领导。
+
+
+            请根据我提供的内容，自动整理成标准周报格式。
+
+            我的本周工作内容：
+
+            {{#context#}}'
+        selected: false
+        title: 读取周报
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1773037083844'
+      position:
+        x: 1283.847763548983
+        y: 359.88668522094576
+      positionAbsolute:
+        x: 1283.847763548983
+        y: 359.88668522094576
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: <font color ="red">文件内容为空，无法处理 </font>
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 115
+      id: '1773037212620'
+      position:
+        x: 1283.847763548983
+        y: 469.34622451831933
+      positionAbsolute:
+        x: 1283.847763548983
+        y: 469.34622451831933
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen-max
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 0f44168c-322d-4d99-83a1-e540ced4360a
+          role: system
+          text: '请你帮我生成一份清晰、专业、简洁的工作周报。
+
+            内容要求：
+
+            1. 本周完成工作：分点列出，突出重点、结果和数据。
+
+            2. 遇到的问题与解决方案：客观、简洁。
+
+            3. 下周工作计划：明确、可执行。
+
+            4. 语言正式、条理清晰，适合直接提交给领导。
+
+
+            请根据我提供的内容，自动整理成标准周报格式。
+
+            我的本周工作内容：
+
+            {{#context#}}'
+        selected: false
+        title: 用户输入周报
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1773037226273'
+      position:
+        x: 1120.6052474502294
+        y: 702.1133147790542
+      positionAbsolute:
+        x: 1120.6052474502294
+        y: 702.1133147790542
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        output_type: string
+        selected: false
+        title: 变量聚合器 2
+        type: variable-aggregator
+        variables:
+        - - '1773037083844'
+          - text
+        - - '1773037226273'
+          - text
+      height: 133
+      id: '1773037239615'
+      position:
+        x: 1632.6905558776862
+        y: 514.1094588674027
+      positionAbsolute:
+        x: 1632.6905558776862
+        y: 514.1094588674027
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: /console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 113
+      id: '1773037323961'
+      position:
+        x: 1938.2538035946257
+        y: 487.122391405223
+      positionAbsolute:
+        x: 1938.2538035946257
+        y: 487.122391405223
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            ja_JP: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            pt_BR: Optional docx template file for styling。Use "Home"-"Styles Pane"
+              in Microsoft Word to edit styles of the docx file.
+            zh_Hans: 可选的docx模板文件，用于样式控制。使用Microsoft Word中“开始”-“样式窗格”对docx文件的样式进行编辑。
+          label:
+            en_US: DOCX Template File
+            ja_JP: DOCX Template File
+            pt_BR: DOCX Template File
+            zh_Hans: DOCX 模板文件
+          llm_description: An optional .pptx file that serves as a template for the
+            generated presentation
+          max: null
+          min: null
+          name: docx_template_file
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Optional custom output file name, and the filename suffix is not
+              required.
+            ja_JP: Optional custom output file name, and the filename suffix is not
+              required.
+            pt_BR: Optional custom output file name, and the filename suffix is not
+              required.
+            zh_Hans: 可选的自定义输出文件名，后缀名无需指定
+          label:
+            en_US: Output Filename
+            ja_JP: Output Filename
+            pt_BR: Output Filename
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          docx_template_file: ''
+          md_text: ''
+          output_filename: ''
+        plugin_id: bowenliang123/md_exporter
+        plugin_unique_identifier: bowenliang123/md_exporter:3.6.9@3f027d63e80b44d5d5a9f706871afaef37905b8f8a89a2d152dc530211a8acb1
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=60e4536c-aec4-4945-8b75-7829c4435185&filename=94713265c9473c3bd2bc8b0dd0794ad40955b7431610243bbd00ab02dae281cf.png
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown ⮕ DOCX (1)
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown ⮕ DOCX
+        tool_name: md_to_docx
+        tool_node_version: '2'
+        tool_parameters:
+          docx_template_file:
+            type: variable
+            value:
+            - '1773035229800'
+            - file
+          md_text:
+            type: mixed
+            value: '{{#1773037239615.output#}}'
+          output_filename:
+            type: mixed
+            value: 周报
+        type: tool
+      height: 51
+      id: '17730373441990'
+      position:
+        x: 1946.0887586642912
+        y: 657.7503018112634
+      positionAbsolute:
+        x: 1946.0887586642912
+        y: 657.7503018112634
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1773037083844.text#}}
+
+          {{#1773037226273.text#}}
+
+          {{#17730373441990.files#}}'
+        selected: false
+        title: 直接回复 6
+        type: answer
+        variables: []
+      height: 140
+      id: '1773037370695'
+      position:
+        x: 2247.088758664291
+        y: 657.7503018112634
+      positionAbsolute:
+        x: 2247.088758664291
+        y: 657.7503018112634
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Document title, only supports plain text content.
+            ja_JP: Document title, only supports plain text content.
+            pt_BR: Document title, only supports plain text content.
+            zh_Hans: 文档标题，只支持纯文本内容。
+          label:
+            en_US: Document title
+            ja_JP: Document title
+            pt_BR: Document title
+            zh_Hans: 文档标题
+          llm_description: 文档标题，只支持纯文本内容，可以为空。
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Document content, supports markdown syntax, can be empty.
+            ja_JP: Document content, supports markdown syntax, can be empty.
+            pt_BR: Document content, supports markdown syntax, can be empty.
+            zh_Hans: 文档内容，支持 markdown 语法，可以为空。
+          label:
+            en_US: Document content
+            ja_JP: Document content
+            pt_BR: Document content
+            zh_Hans: 文档内容
+          llm_description: 文档内容，支持 markdown 语法，可以为空。
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            ja_JP: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            pt_BR: 'The token of the folder where the document is located. If it is
+              not passed or is empty, it means the root directory. For Example: https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf
+
+              '
+            zh_Hans: 文档所在文件夹的 Token，不传或传空表示根目录。例如：https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf。
+          label:
+            en_US: folder_token
+            ja_JP: folder_token
+            pt_BR: folder_token
+            zh_Hans: 文档所在文件夹的 Token
+          llm_description: 文档所在文件夹的 Token，不传或传空表示根目录。例如：https://svi136aogf123.feishu.cn/drive/folder/JgR9fiG9AlPt8EdsSNpcGjIInbf。
+          max: null
+          min: null
+          name: folder_token
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          content: ''
+          folder_token: ''
+          title: ''
+        plugin_id: langgenius/feishu_document
+        plugin_unique_identifier: langgenius/feishu_document:0.0.1@7ffc4bd08dad6ca203ea343f2771de3ed4de2a19ed196b305d1ea7921370d7a7
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=60e4536c-aec4-4945-8b75-7829c4435185&filename=6ba0989bfb8e757355f7dae5f511c8d1ca34be80733914fa0ef37a914e5c14fa.svg
+        provider_id: langgenius/feishu_document/feishu_document
+        provider_name: langgenius/feishu_document/feishu_document
+        provider_type: builtin
+        selected: false
+        title: 创建飞书文档
+        tool_configurations: {}
+        tool_description: 创建飞书文档，支持创建空文档和带内容的文档，支持 markdown 语法创建。应用需要开启机器人能力(https://open.feishu.cn/document/faq/trouble-shooting/how-to-enable-bot-ability)。
+        tool_label: 创建飞书文档
+        tool_name: create_document
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1773037239615.output#}}'
+          folder_token:
+            type: mixed
+            value: null
+          title:
+            type: mixed
+            value: '{{#1773037323961.text#}} 周报'
+        type: tool
+      height: 51
+      id: '1773037402428'
+      position:
+        x: 2262.969163704079
+        y: 519.3327622471797
+      positionAbsolute:
+        x: 2262.969163704079
+        y: 519.3327622471797
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1773037402428.text#}}
+
+          {{#1773037402428.files#}}'
+        selected: false
+        title: 直接回复 7
+        type: answer
+        variables: []
+      height: 121
+      id: '1773037408001'
+      position:
+        x: 2565.7102648306713
+        y: 519.3327622471797
+      positionAbsolute:
+        x: 2565.7102648306713
+        y: 519.3327622471797
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1773035717242'
+          - text
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 9fc74f50-3bcc-42e9-9c47-e4d043f03f68
+          role: system
+          text: '请你帮我整理一份规范、清晰的会议（会员）纪要。
+
+            要求：
+
+            1. 提炼核心议题、关键结论、重要决策。
+
+            2. 明确责任人、完成时间、待办事项。
+
+            3. 结构清晰：会议主题、参会人员、时间、主要内容、决议、下一步行动。
+
+            4. 语言精炼，不啰嗦，便于存档和同步。
+
+
+            请基于我提供的语音转文字/聊天记录/会议内容整理：
+
+            {{#context#}}'
+        selected: false
+        title: LLM 5
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1773043918353'
+      position:
+        x: 1542.7319918283288
+        y: -3.332842348242719
+      positionAbsolute:
+        x: 1542.7319918283288
+        y: -3.332842348242719
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: -991.8866279402532
+      y: 139.20374149807478
+      zoom: 0.6597539553864478
+  rag_pipeline_variables: []
